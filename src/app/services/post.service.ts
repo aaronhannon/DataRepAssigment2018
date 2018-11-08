@@ -16,13 +16,19 @@ export class PostService {
 
   private posts: Post[] = [];
   //private postsUpdated = new Subject<Post[]>();
+  // private user: String = "admin";
+
 
   getPosts() {
     return [...this.posts];
   }
 
-  addPost(title: string, content: string,image: string): Observable<any> {
-    const post: Post = {title: title, content: content,image: image};
+  deletePost(id: string):Observable<any>{
+    return this.http.delete("http://localhost:8081/api/posts/"+id);
+    }
+
+  addPost(title: string, description: string,image: string,user:string): Observable<any> {
+    const post: Post = {title: title, description: description,image: image,user:user};
     return this.http.post("http://localhost:8081/api/posts",post);
   }
 

@@ -1,3 +1,4 @@
+
 var express = require('express');
 var app = express();
 var path = require('path');
@@ -10,11 +11,11 @@ mongoose.connect(mongoDB);
 var Schema = mongoose.Schema;
 var postSchema = new Schema({
     title: String,
-    content: String,
-    image: String
+    description: String,
+    image: String,
+    user: String
 })
 var PostModel = mongoose.model('newPosts', postSchema);
-
 
 //Here we are configuring express to use body-parser as middle-ware. 
 app.use(bodyParser.urlencoded({ extended: false })); 
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, OPTIONS")
     res.header("Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept");
     next();
@@ -30,17 +32,25 @@ app.use(function(req, res, next) {
 app.post('/api/posts', function(req, res){
     console.log("post successful");
     console.log(req.body.title);
-    console.log(req.body.content);
+    console.log(req.body.description);
     console.log(req.body.image);
+    console.log(req.body.user);
 
     PostModel.create({
         title: req.body.title,
-        content: req.body.content,
-        image: req.body.image
+        description: req.body.description,
+        image: req.body.image,
+        user: req.body.user
     });
 
 
 })
+
+app.delete('/api/posts/:id', function(req,res){
+    PostModel.deleteOne({ _id: req.params.id },
+    function (err) {});
+    })
+    
 
 app.get('/api/posts', function(req, res){
 

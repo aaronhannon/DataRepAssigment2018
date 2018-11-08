@@ -7,13 +7,13 @@ import {PostService} from '../services/post.service';
   templateUrl: './post-create.component.html',
   styleUrls: ['./post-create.component.css']
 })
-export class PostCreateComponent implements OnInit {
+export class PostCreateComponent {
 
   constructor(private service:PostService) { }
 
-  onAddPost(form: NgForm) {
+  onAddPost(form: NgForm,user:string) {
 
-    this.service.addPost(form.value.title, form.value.content ,form.value.image).subscribe();
+    this.service.addPost(form.value.title, form.value.description ,form.value.image,user).subscribe();
     
     console.log(form.value);
     form.resetForm();
