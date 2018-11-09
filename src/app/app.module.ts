@@ -7,6 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes} from '@angular/router';
 import { FormsModule } from "@angular/forms";
+import { AvatarModule } from 'ngx-avatar';
 import { MatInputModule,
   MatMenuModule,
   MatCardModule,
@@ -15,6 +16,8 @@ import { MatInputModule,
   MatToolbarModule,
   MatExpansionModule} from '@angular/material';
 import { PostCreateComponent } from './post-create/post-create.component';
+import { UserCreateComponent } from './user-create/user-create.component';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   {
@@ -24,6 +27,14 @@ const appRoutes: Routes = [
   {
     path: 'create',
     component: PostCreateComponent
+  },
+  {
+    path: 'user',
+    component: UserCreateComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 
@@ -32,12 +43,15 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     PostDetailsComponent,
-    PostCreateComponent
+    PostCreateComponent,
+    UserCreateComponent,
+    LoginComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
+    AvatarModule,
     HttpClientModule,
     MatIconModule,
     MatButtonModule,

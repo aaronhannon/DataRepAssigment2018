@@ -9,9 +9,10 @@
 
 <mat-toolbar color="primary">Posts List</mat-toolbar>
 <mat-accordion multi="true" *ngIf="posts.length > 0">
-  <mat-expansion-panel [expanded]="true" *ngFor="let post of posts">
-    <mat-expansion-panel-header>
-      {{ post.title }}
+  <mat-expansion-panel [expanded]="false" *ngFor="let post of posts">
+    <mat-expansion-panel-header [collapsedHeight]="'60px'">
+      <ngx-avatar size="50" src="{{post.image}}"></ngx-avatar>{{ post.title }}
+      
     </mat-expansion-panel-header>
     <p>{{ post.description }}</p>
     <p>Posted By:{{post.user}}</p>
@@ -21,5 +22,6 @@
       <button (click)="onDelete(post._id)" mat-button color="warn">DELETE</button>
     </mat-action-row>
   </mat-expansion-panel>
+    
 </mat-accordion>
 <p class="info-text mat-body-1" *ngIf="posts.length <= 0">No posts added yet!</p> 

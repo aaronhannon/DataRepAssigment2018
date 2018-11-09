@@ -10,8 +10,15 @@
             <span class="title-center">
         My single page application
     </span>
-    <button mat-button [routerLink]="['/create']" color="Warn">Create</button>
+    <button mat-button [routerLink]="['/create']" color="Warn">Create Post</button>
     <button mat-button [routerLink]="['/list']">List</button>
+    <button mat-button [routerLink]="['/user']">Create User</button>
+    <button mat-button [routerLink]="['/login']">Login</button>
+    <span class="userSpace"></span>
+    <!-- <div><ngx-avatar class="user" size="40" src="{{avatar}}"><img src="{{avatar}}"></ngx-avatar></div> -->
+    <img alt ="" src="{{avatar}}" class="user" width="40px" height="40px">
+    
+    <p>{{loginUser}}</p>
       </mat-toolbar-row>
  </mat-toolbar>
  

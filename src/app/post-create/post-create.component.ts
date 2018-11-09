@@ -17,6 +17,7 @@ export class PostCreateComponent {
     
     console.log(form.value);
     form.resetForm();
+    
   }
 
 

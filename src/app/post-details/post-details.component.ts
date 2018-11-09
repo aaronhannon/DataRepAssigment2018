@@ -17,8 +17,11 @@ export class PostDetailsComponent implements OnInit {
   onDelete(id: string){
     console.log("Deleting item")
     this.ps.deletePost(id).subscribe();
+    location.reload();
     this.ngOnInit();
+    //this.refresh();
     }
+
 
   ngOnInit(){
     //this.posts = this.ps.getPosts();

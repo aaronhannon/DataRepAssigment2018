@@ -15,7 +15,15 @@ var postSchema = new Schema({
     image: String,
     user: String
 })
+
+var userSchema = new Schema({
+    username: String,
+    password: String,
+    image: String
+})
+
 var PostModel = mongoose.model('newPosts', postSchema);
+var UserModel = mongoose.model('users', userSchema);
 
 //Here we are configuring express to use body-parser as middle-ware. 
 app.use(bodyParser.urlencoded({ extended: false })); 
@@ -46,6 +54,21 @@ app.post('/api/posts', function(req, res){
 
 })
 
+app.post('/api/users', function(req, res){
+    console.log("user created");
+    console.log(req.body.username);
+    console.log(req.body.password);
+    console.log(req.body.image);
+
+    UserModel.create({
+        username: req.body.username,
+        password: req.body.password,
+        image: req.body.image,
+    });
+
+
+})
+
 app.delete('/api/posts/:id', function(req,res){
     PostModel.deleteOne({ _id: req.params.id },
     function (err) {});
@@ -57,7 +80,16 @@ app.get('/api/posts', function(req, res){
     PostModel.find(function(err, data){
         res.json(data);
     });
- 
+    
+})
+
+app.get('/api/users', function(req, res){
+    
+    UserModel.find(function(err, data){
+        res.json(data);
+        console.log(data[0].username);
+    });
+    
 })
 
 
