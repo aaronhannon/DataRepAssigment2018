@@ -1,26 +1,57 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { PostDetailsComponent } from './post-details/post-details.component';
-import {PostService} from './services/post.service';
-import {HttpClientModule} from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes} from '@angular/router';
-import { FormsModule } from "@angular/forms";
-import { AvatarModule } from 'ngx-avatar';
-import { MatInputModule,
+import {
+  BrowserModule
+} from '@angular/platform-browser';
+import {
+  NgModule
+} from '@angular/core';
+import {
+  AppComponent
+} from './app.component';
+import {
+  PostDetailsComponent
+} from './post-details/post-details.component';
+import {
+  PostService
+} from './services/post.service';
+import {
+  HttpClientModule
+} from '@angular/common/http';
+import {
+  BrowserAnimationsModule
+} from '@angular/platform-browser/animations';
+import {
+  RouterModule,
+  Routes
+} from '@angular/router';
+import {
+  FormsModule
+} from "@angular/forms";
+import {
+  AvatarModule
+} from 'ngx-avatar';
+import {
+  MatInputModule,
   MatMenuModule,
   MatCardModule,
   MatButtonModule,
   MatIconModule,
   MatToolbarModule,
-  MatExpansionModule} from '@angular/material';
-import { PostCreateComponent } from './post-create/post-create.component';
-import { UserCreateComponent } from './user-create/user-create.component';
-import { LoginComponent } from './login/login.component';
+  MatExpansionModule,
+  MatGridListModule,
+  MatSidenavModule
+} from '@angular/material';
+import {
+  PostCreateComponent
+} from './post-create/post-create.component';
+import {
+  UserCreateComponent
+} from './user-create/user-create.component';
+import {
+  LoginComponent
+} from './login/login.component';
+import { PostEditComponent } from './post-edit/post-edit.component';
 
-const appRoutes: Routes = [
-  {
+const appRoutes: Routes = [{
     path: 'list',
     component: PostDetailsComponent
   },
@@ -35,6 +66,10 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'edit/:_id',
+    component: PostEditComponent
   }
 ];
 
@@ -45,7 +80,8 @@ const appRoutes: Routes = [
     PostDetailsComponent,
     PostCreateComponent,
     UserCreateComponent,
-    LoginComponent
+    LoginComponent,
+    PostEditComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -57,13 +93,15 @@ const appRoutes: Routes = [
     MatButtonModule,
     BrowserAnimationsModule,
     MatInputModule,
-  MatCardModule,
-  MatButtonModule,
-  MatToolbarModule,
-  MatExpansionModule,
-  MatMenuModule
+    MatCardModule,
+    MatGridListModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatSidenavModule
   ],
   providers: [PostService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

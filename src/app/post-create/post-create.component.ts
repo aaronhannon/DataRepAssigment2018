@@ -1,6 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from "@angular/forms";
-import {PostService} from '../services/post.service';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  NgForm
+} from "@angular/forms";
+import {
+  PostService
+} from '../services/post.service';
+import {
+  AppComponent
+} from '../app.component'
 
 @Component({
   selector: 'app-post-create',
@@ -9,15 +19,21 @@ import {PostService} from '../services/post.service';
 })
 export class PostCreateComponent {
 
-  constructor(private service:PostService) { }
+  constructor(private service: PostService, private app: AppComponent) {}
 
-  onAddPost(form: NgForm,user:string) {
+  user: string;
+  avatar: string;
 
-    this.service.addPost(form.value.title, form.value.description ,form.value.image,user).subscribe();
-    
+  onAddPost(form: NgForm, user: string) {
+
+    this.user = this.app.getUser()
+    this.avatar = this.app.getAvatar();
+
+    this.service.addPost(form.value.title, form.value.description, form.value.image, this.user, this.avatar).subscribe();
+
     console.log(form.value);
     form.resetForm();
-    
+
   }
 
 

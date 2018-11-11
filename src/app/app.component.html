@@ -5,30 +5,47 @@
   <a mat-raised-button color="primary" [routerLink]="['/']"><mat-icon>add</mat-icon></a>
 </div> -->
 
-<mat-toolbar color="primary"> 
-    <mat-toolbar-row>
-            <span class="title-center">
-        My single page application
+<mat-toolbar color="primary" class="md-elevation-z5">
+  <mat-toolbar-row>
+      <!-- <mat-drawer-container class="example-container" autosize>
+          <mat-drawer #drawer class="example-sidenav" mode="side">
+            <p>Auto-resizing sidenav</p>
+            <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+            <button (click)="showFiller = !showFiller" mat-raised-button>
+              Toggle extra text
+            </button>
+          </mat-drawer>
+        
+          <div class="example-sidenav-content">
+            <button type="button" mat-button (click)="drawer.toggle()">
+              Toggle sidenav
+            </button>
+          </div>
+        
+        </mat-drawer-container> -->
+    <span class="title-center">
+      My single page application
     </span>
     <button mat-button [routerLink]="['/create']" color="Warn">Create Post</button>
     <button mat-button [routerLink]="['/list']">List</button>
     <button mat-button [routerLink]="['/user']">Create User</button>
     <button mat-button [routerLink]="['/login']">Login</button>
+    <button mat-button [routerLink]="['/edit']">edit</button>
     <span class="userSpace"></span>
     <!-- <div><ngx-avatar class="user" size="40" src="{{avatar}}"><img src="{{avatar}}"></ngx-avatar></div> -->
-    <img alt ="" src="{{avatar}}" class="user" width="40px" height="40px">
-    
+    <img alt="" src="{{avatar}}" class="user" width="40px" height="40px">
+
     <p>{{loginUser}}</p>
-      </mat-toolbar-row>
- </mat-toolbar>
- 
+  </mat-toolbar-row>
+</mat-toolbar>
+
 
 <!--<button mat-button color="primary" [matMenuTriggerFor]="menu">Posts Menu</button>
 <mat-menu color="primary" #menu="matMenu">
   <button color="primary" mat-menu-item [routerLink]="['/create']">Create</button>
   <button color="primary"mat-menu-item [routerLink]="['/']">List</button>
 </mat-menu> -->
-  
- 
+
+
 
 <router-outlet></router-outlet>

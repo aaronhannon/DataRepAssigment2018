@@ -4,16 +4,38 @@
       
      <p>{{p.title}}</p>
      <p>{{p.content}}</p>
-     <p><button>Edit</button><button>Delete</button></p>
-</ul>  -->
-
-<mat-toolbar color="primary">Posts List</mat-toolbar>
-<mat-accordion multi="true" *ngIf="posts.length > 0">
-  <mat-expansion-panel [expanded]="false" *ngFor="let post of posts">
+<p><button>Edit</button><button>Delete</button></p>
+</ul> -->
+<mat-grid-list *ngIf="posts.length > 0" cols="4" >
+  <!-- rowHeight="2:1" -->
+    <mat-grid-tile *ngFor="let post of posts">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <ngx-avatar size="50" src="{{post.avatar}}"></ngx-avatar>
+              <mat-card-title>{{post.title}}</mat-card-title>
+              <mat-card-subtitle>{{post.user}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="{{post.image}}" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                {{post.description}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <!-- , post._id -->
+                <button mat-buttoncolor="primary" [routerLink]="['/edit',post._id]">edit</button>
+                <!-- <button mat-button  [routerLink]="['/edit']">EDIT</button> -->
+                <button (click)="onDelete(post._id)" mat-button color="warn">DELETE</button>
+            </mat-card-actions>
+          </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <!-- <mat-expansion-panel [expanded]="false" *ngFor="let post of posts">
     <mat-expansion-panel-header [collapsedHeight]="'60px'">
-      <ngx-avatar size="50" src="{{post.image}}"></ngx-avatar>{{ post.title }}
+      <ngx-avatar size="50" src="{{post.avatar}}"></ngx-avatar>{{ post.user }}
       
     </mat-expansion-panel-header>
+    <p>{{post.title}}</p>
     <p>{{ post.description }}</p>
     <p>Posted By:{{post.user}}</p>
     <p><img width ="30%" src="{{post.image}}"></p>
@@ -21,7 +43,5 @@
       <button mat-button color="primary">EDIT</button>
       <button (click)="onDelete(post._id)" mat-button color="warn">DELETE</button>
     </mat-action-row>
-  </mat-expansion-panel>
-    
-</mat-accordion>
+  </mat-expansion-panel> -->
 <p class="info-text mat-body-1" *ngIf="posts.length <= 0">No posts added yet!</p> 

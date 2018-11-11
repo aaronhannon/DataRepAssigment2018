@@ -2,5 +2,6 @@ export interface Post {
   title: string;
   description: string;
   image: string;
-  user:String
+  user: string;
+  avatar: string;
 }

@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { PostService } from './services/post.service';
+import {
+  Component
+} from '@angular/core';
+import {
+  PostService
+} from './services/post.service';
 
 @Component({
   selector: 'app-root',
@@ -8,32 +12,41 @@ import { PostService } from './services/post.service';
 })
 export class AppComponent {
   title = 'Project';
+  showFiller = false;
 
-  constructor(private ps:PostService){
-  }
+  constructor(private ps: PostService) {}
 
   users: any = [];
-  loginUser: String;
-  avatar: String;
-  password:String;
+  loginUser: string;
+  avatar: string;
+  password: String;
 
 
-  ngOnInit(){
+  ngOnInit() {
     //this.posts = this.ps.getPosts();
-   
+
     this.ps.getUserData().subscribe(data => {
-        this.users = data;
+      this.users = data;
       console.log(this.users[0].username);
       // this.loginUser = this.users[0].username;
       // this.avatar = this.users[0].image;
     });
 
-}
+  }
 
-setLogin(username:String,avatar:String){
-  this.loginUser = username;
-  this.avatar = avatar;
-  // location.reload();
-}
+  setLogin(username: string, avatar: string) {
+    this.loginUser = username;
+    this.avatar = avatar;
+    // location.reload();
+  }
+
+  getUser() {
+    return this.loginUser
+    // location.reload();
+  }
+
+  getAvatar() {
+    return this.avatar;
+  }
 
 }
