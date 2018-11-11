@@ -1,10 +1,10 @@
 <mat-card>
     <form (submit)="onEditPost(postForm)" #postForm="ngForm">
   
-      <h2>Title</h2><input matInput type="text" name="title" ngModel={{post[0].title}} required minlength="3" #title="ngModel">
+      <h2>Title</h2><input matInput type="text" name="title" ngModel={{post[0]?.title}} required minlength="3" #title="ngModel">
       <!-- <mat-error *ngIf="title.invalid">Please enter a post title.</mat-error> -->
   
-      <h2>Description</h2><textarea matInput rows="4" name="description" ngModel={{post[0].description}} required #description="ngModel"></textarea>
+      <h2>Description</h2><textarea matInput rows="4" name="description" ngModel={{post[0]?.description}} required #description="ngModel"></textarea>
   
   
       <button mat-raised-button color="accent" type="submit">Save Post</button>

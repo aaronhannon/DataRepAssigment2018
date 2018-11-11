@@ -15,7 +15,7 @@
               <mat-card-title>{{post.title}}</mat-card-title>
               <mat-card-subtitle>{{post.user}}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="{{post.image}}" alt="Photo of a Shiba Inu">
+            <img mat-card-image src="{{post.image}}">
             <mat-card-content>
               <p>
                 {{post.description}}
@@ -23,9 +23,9 @@
             </mat-card-content>
             <mat-card-actions>
               <!-- , post._id -->
-                <button mat-buttoncolor="primary" [routerLink]="['/edit',post._id]">edit</button>
+                <button mat-button color="primary" *ngIf="post.user == user" [routerLink]="['/edit',post._id]">EDIT</button>
                 <!-- <button mat-button  [routerLink]="['/edit']">EDIT</button> -->
-                <button (click)="onDelete(post._id)" mat-button color="warn">DELETE</button>
+                <button *ngIf="post.user == user" (click)="onDelete(post._id)" mat-button color="warn">DELETE</button>
             </mat-card-actions>
           </mat-card>
     </mat-grid-tile>

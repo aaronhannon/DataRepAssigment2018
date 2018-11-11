@@ -5,9 +5,9 @@
   <a mat-raised-button color="primary" [routerLink]="['/']"><mat-icon>add</mat-icon></a>
 </div> -->
 
-<mat-toolbar color="primary" class="md-elevation-z5">
+<!--<mat-toolbar color="primary" class="md-elevation-z5">
   <mat-toolbar-row>
-      <!-- <mat-drawer-container class="example-container" autosize>
+       <mat-drawer-container class="example-container" autosize>
           <mat-drawer #drawer class="example-sidenav" mode="side">
             <p>Auto-resizing sidenav</p>
             <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
@@ -22,7 +22,7 @@
             </button>
           </div>
         
-        </mat-drawer-container> -->
+        </mat-drawer-container> 
     <span class="title-center">
       My single page application
     </span>
@@ -30,16 +30,40 @@
     <button mat-button [routerLink]="['/list']">List</button>
     <button mat-button [routerLink]="['/user']">Create User</button>
     <button mat-button [routerLink]="['/login']">Login</button>
-    <button mat-button [routerLink]="['/edit']">edit</button>
+    <button mat-button [routerLink]="['/myUploads']">My Uploads</button>
     <span class="userSpace"></span>
-    <!-- <div><ngx-avatar class="user" size="40" src="{{avatar}}"><img src="{{avatar}}"></ngx-avatar></div> -->
+     <div><ngx-avatar class="user" size="40" src="{{avatar}}"><img src="{{avatar}}"></ngx-avatar></div>
     <img alt="" src="{{avatar}}" class="user" width="40px" height="40px">
 
     <p>{{loginUser}}</p>
   </mat-toolbar-row>
-</mat-toolbar>
+</mat-toolbar>-->
 
-
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="example-toolbar">
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <h1 class="example-app-name">Responsive App</h1>
+      <span class="userSpace"></span>
+     <img alt="" src="{{avatar}}" class="user" width="40px" height="40px">
+     <p>{{loginUser}}</p>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <mat-nav-list>
+            <p><button mat-button [routerLink]="['/create']" color="Warn">Create Post</button></p>
+            <p><button mat-button [routerLink]="['/list']">List</button></p>
+            <p><button mat-button [routerLink]="['/user']">Create User</button></p>
+            <p><button mat-button [routerLink]="['/login']">Login</button></p>
+            <p><button mat-button [routerLink]="['/myUploads']">My Uploads</button></p>
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content>
+          <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>  
 <!--<button mat-button color="primary" [matMenuTriggerFor]="menu">Posts Menu</button>
 <mat-menu color="primary" #menu="matMenu">
   <button color="primary" mat-menu-item [routerLink]="['/create']">Create</button>
@@ -48,4 +72,4 @@
 
 
 
-<router-outlet></router-outlet>
+<!--  -->

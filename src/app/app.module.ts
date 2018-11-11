@@ -38,7 +38,8 @@ import {
   MatToolbarModule,
   MatExpansionModule,
   MatGridListModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatListModule
 } from '@angular/material';
 import {
   PostCreateComponent
@@ -50,6 +51,7 @@ import {
   LoginComponent
 } from './login/login.component';
 import { PostEditComponent } from './post-edit/post-edit.component';
+import { MyUploadsComponent } from './my-uploads/my-uploads.component';
 
 const appRoutes: Routes = [{
     path: 'list',
@@ -70,6 +72,10 @@ const appRoutes: Routes = [{
   {
     path: 'edit/:_id',
     component: PostEditComponent
+  },
+  {
+    path: 'myUploads',
+    component: MyUploadsComponent
   }
 ];
 
@@ -81,7 +87,8 @@ const appRoutes: Routes = [{
     PostCreateComponent,
     UserCreateComponent,
     LoginComponent,
-    PostEditComponent
+    PostEditComponent,
+    MyUploadsComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -98,6 +105,7 @@ const appRoutes: Routes = [{
     MatButtonModule,
     MatToolbarModule,
     MatExpansionModule,
+    MatListModule,
     MatMenuModule,
     MatSidenavModule
   ],

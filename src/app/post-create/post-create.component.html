@@ -7,8 +7,11 @@
     <h2>Description</h2><textarea matInput rows="4" name="description" width="100" ngModel required #description="ngModel"></textarea>
 
     <h2>Image</h2><textarea matInput rows="4" name="image" width="100" ngModel required #image="ngModel"></textarea>
+
+    <!-- <h2>Upload image</h2><input (change)="onFileSelected($event)" type="file" name="file" ngModel required minlength="3" #file="ngModel"> -->
     <!-- <mat-error *ngIf="content.invalid">Please enter a post title.</mat-error> -->
 
     <button mat-raised-button color="accent" type="submit">Save Post</button>
+    <!-- <button mat-raised-button color="accent" type="button" (click)="onUpload()">upload Image</button> -->
   </form>
 </mat-card>

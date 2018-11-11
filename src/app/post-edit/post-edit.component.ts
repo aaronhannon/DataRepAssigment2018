@@ -32,8 +32,15 @@ export class PostEditComponent implements OnInit {
   }
 
   onEditPost(form: NgForm) {
-    this.ps.updatePost(this.post[0]._id, form.value.title, form.value.description,this.post[0].image,this.post[0].user,this.post[0].avatar).subscribe();
-    this.router.navigate(['/list']);
+    if(this.post[0].user == localStorage.getItem("username")){
+      this.ps.updatePost(this.post[0]._id, form.value.title, form.value.description,this.post[0].image,this.post[0].user,this.post[0].avatar).subscribe();
+      this.router.navigate(['/list']);
+      location.reload();
+    }else{
+      console.log("Invalid User");
+    }
+
+
     console.log("here");
   }
   

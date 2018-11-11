@@ -1,5 +1,7 @@
 var express = require('express');
+var multer = require('multer');
 var app = express();
+var app1 = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 
@@ -22,8 +24,13 @@ var userSchema = new Schema({
   image: String
 })
 
+var imageSchema = new Schema({
+    image: String,
+  })
+
 var PostModel = mongoose.model('newPosts', postSchema);
 var UserModel = mongoose.model('users', userSchema);
+var ImageModel = mongoose.model('image', imageSchema);
 
 //Here we are configuring express to use body-parser as middle-ware. 
 app.use(bodyParser.urlencoded({
@@ -58,6 +65,15 @@ app.post('/api/posts', function (req, res) {
 
 })
 
+app.post('/api/images', function (req, res) {
+    console.log("image posted");
+    console.log(req.body.image);
+  
+    ImageModel.create({
+      image: req.body.image,
+    });
+  })
+
 app.post('/api/users', function (req, res) {
   console.log("user created");
   console.log(req.body.username);
@@ -81,18 +97,18 @@ app.delete('/api/posts/:id', function (req, res) {
 })
 
 app.get('/api/posts/:id', function (req, res) {
-    PostModel.find({
+  PostModel.find({
       _id: req.params.id
     },
     function (err, data) {
-    //   if (err)
-    //     return handleError(err);
+      //   if (err)
+      //     return handleError(err);
       res.json(data);
     });
 });
 
 app.put('/api/posts/:id', function (req, res) {
-    PostModel.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+  PostModel.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     // if (err) return next(err);
     res.json(post);
   });

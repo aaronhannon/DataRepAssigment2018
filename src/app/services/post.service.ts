@@ -15,6 +15,8 @@ import {
   User
 } from '../user.model';
 
+import { map } from "rxjs/operators";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -65,7 +67,7 @@ export class PostService {
       description: description,
       image: image,
       user: user,
-      avatar: avatar
+      avatar: avatar,
     };
     return this.http.post("http://localhost:8081/api/posts", post);
   }
@@ -75,7 +77,7 @@ export class PostService {
     return this.http.get("http://localhost:8081/api/posts/" + id);
   }
 
-  updatePost(id: string, title: string, description: string,image:string,user:string,avatar:string): Observable < any > {
+  updatePost(id: string, title: string, description: string,image:string, user:string,avatar:string): Observable < any > {
     const post: Post = {
       title: title,
       description: description,

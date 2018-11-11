@@ -1,9 +1,10 @@
 import {
-  Component
+  Component, ChangeDetectorRef
 } from '@angular/core';
 import {
   PostService
 } from './services/post.service';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,12 @@ export class AppComponent {
   title = 'Project';
   showFiller = false;
 
-  constructor(private ps: PostService) {}
+  constructor(private ps: PostService,changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+
+  }
 
   users: any = [];
   loginUser: string;
@@ -27,7 +33,6 @@ export class AppComponent {
 
     this.ps.getUserData().subscribe(data => {
       this.users = data;
-      console.log(this.users[0].username);
       // this.loginUser = this.users[0].username;
       // this.avatar = this.users[0].image;
     });
@@ -47,6 +52,15 @@ export class AppComponent {
 
   getAvatar() {
     return this.avatar;
+  }
+
+  mobileQuery: MediaQueryList;
+
+
+  private _mobileQueryListener: () => void;
+
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
 }
