@@ -27,7 +27,7 @@ export class PostEditComponent implements OnInit {
     console.log("Id2: "+ this.route.snapshot.params['_id']);
     this.ps.getPost(this.route.snapshot.params['_id']).subscribe(data => {
       this.post = data;
-      console.log("posts: "+this.post);
+      console.log(this.post);
     })
   }
 

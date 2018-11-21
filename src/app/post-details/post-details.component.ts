@@ -23,8 +23,11 @@ export class PostDetailsComponent implements OnInit {
 
 
   posts: any = [];
+  users: any = [];
   user: string;
   avatar: string;
+  userCount: number;
+  postCount: number;
 
   constructor(private ps: PostService, private app: AppComponent) {}
 
@@ -43,11 +46,18 @@ export class PostDetailsComponent implements OnInit {
 
     this.ps.getPostsData().subscribe(data => {
       this.posts = data;
+      this.postCount = this.posts.length;
+      console.log(this.postCount)
     });
     console.log(localStorage.getItem("username"));
     this.user = localStorage.getItem("username");
     this.avatar = localStorage.getItem("avatar");
     this.app.setLogin(this.user,this.avatar);
+    
+    this.ps.getUserData().subscribe(data =>{
+      this.users = data;
+      this.userCount = this.users.length;
+    });
     
   }
 

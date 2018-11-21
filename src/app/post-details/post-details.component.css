@@ -9,3 +9,23 @@
     /* background-image: url('{{post.avatar}}'); */
     background-size: cover;
   }
+
+.spacer{
+width: 200px;
+height: 100%;
+}
+
+mat-grid-list{
+    /* margin: 50px; */
+    padding: 50px;
+}
+
+mat-card{
+    width: 500px;
+    height: 400px;
+}
+
+.cardimg{
+    width: 432px;
+    height: 250px;
+}

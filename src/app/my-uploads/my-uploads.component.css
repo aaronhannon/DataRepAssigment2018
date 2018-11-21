@@ -8,3 +8,8 @@
     /* background-image: url('{{post.avatar}}'); */
     background-size: cover;
   }
+
+  mat-grid-list{
+      /* margin: 50px; */
+      padding: 50px;
+  }

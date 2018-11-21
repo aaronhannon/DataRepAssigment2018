@@ -97,9 +97,7 @@ app.delete('/api/posts/:id', function (req, res) {
 })
 
 app.get('/api/posts/:id', function (req, res) {
-  PostModel.find({
-      _id: req.params.id
-    },
+  PostModel.find({_id: req.params.id},
     function (err, data) {
       //   if (err)
       //     return handleError(err);

@@ -1,10 +1,10 @@
 <mat-card>
-  <form (submit)="login(loginForm)" #loginForm="ngForm">
+  <form #loginForm="ngForm">
 
     <h2>Username</h2><input matInput type="text" name="username" ngModel required minlength="3" #username="ngModel">
     <!-- <mat-error *ngIf="title.invalid">Please enter a post title.</mat-error> -->
     <h2>Password</h2><input matInput type="password" name="password" ngModel required minlength="3" #password="ngModel">
 
-    <button mat-raised-button color="accent" type="submit">Login</button>
+    <p><button mat-raised-button color="accent" type="submit" (click)="login(loginForm)" [routerLink]="['/myUploads']">Login</button></p> 
   </form>
 </mat-card>

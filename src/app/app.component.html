@@ -42,7 +42,9 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
     <mat-toolbar color="primary" class="example-toolbar">
       <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-      <h1 class="example-app-name">Responsive App</h1>
+      <!-- <h1 class="example-app-name"><i class="material-icons">camera_enhance</i> PIC_POSTER</h1> -->
+      <!-- <div [routerLink]="['/list']"> -->
+        <i class="material-icons">camera_enhance</i> <h2>PIC_POSTER</h2>
       <span class="userSpace"></span>
      <img alt="" src="{{avatar}}" class="user" width="40px" height="40px">
      <p>{{loginUser}}</p>
@@ -51,11 +53,12 @@
     <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
       <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
         <mat-nav-list>
-            <p><button mat-button [routerLink]="['/create']" color="Warn">Create Post</button></p>
-            <p><button mat-button [routerLink]="['/list']">List</button></p>
-            <p><button mat-button [routerLink]="['/user']">Create User</button></p>
-            <p><button mat-button [routerLink]="['/login']">Login</button></p>
-            <p><button mat-button [routerLink]="['/myUploads']">My Uploads</button></p>
+            <a mat-list-item [routerLink]="['/create']"><i class="material-icons">add_circle</i> Create Post</a>
+            <a mat-list-item [routerLink]="['/list']"><i class="material-icons">list</i> List</a>
+            <a mat-list-item [routerLink]="['/user']"><i class="material-icons">person_add</i> Create User</a>
+            <a mat-list-item [routerLink]="['/login']"><i class="material-icons">face</i> Login</a>
+            <a mat-list-item [routerLink]="['/myUploads']"><i class="material-icons">photo_library</i> My Uploads</a>
+            <a class="logout" mat-list-item (click)="logout()"><i class="material-icons">power_settings_new</i> Logout</a>
         </mat-nav-list>
       </mat-sidenav>
   
