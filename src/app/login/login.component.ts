@@ -28,14 +28,16 @@ export class LoginComponent implements OnInit {
 
   login(form: NgForm) {
 
+    this.ngOnInit();
+
     for (this.i = 0; this.i < this.users.length; this.i++) {
       if (form.value.username == this.users[this.i].username && form.value.password == this.users[this.i].password) {
 
         console.log(this.users[this.i].image);
         this.app.setLogin(form.value.username, this.users[this.i].image);
-        localStorage.setItem("username",this.users[this.i].username);
-        localStorage.setItem("avatar",this.users[this.i].image);
-        
+        localStorage.setItem("username", this.users[this.i].username);
+        localStorage.setItem("avatar", this.users[this.i].image);
+
       }
     }
   }

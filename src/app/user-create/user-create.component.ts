@@ -8,6 +8,7 @@ import {
 import {
   NgForm
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-create',
@@ -16,7 +17,7 @@ import {
 })
 export class UserCreateComponent implements OnInit {
 
-  constructor(private service: PostService) {}
+  constructor(private router: Router,private service: PostService) {}
 
   addUser(form: NgForm) {
 
@@ -24,6 +25,7 @@ export class UserCreateComponent implements OnInit {
 
     console.log(form.value);
     form.resetForm();
+    this.router.navigate(['/login']);
 
   }
 

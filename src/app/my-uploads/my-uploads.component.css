@@ -1,15 +1,50 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-.example-card {
-    max-width: 400px;
-    min-width: 200px;
-  }
-  
-  .example-header-image {
-    /* background-image: url('{{post.avatar}}'); */
-    background-size: cover;
-  }
 
-  mat-grid-list{
-      /* margin: 50px; */
-      padding: 50px;
-  }
+.example-card {
+  max-width: 400px;
+  min-width: 200px;
+  margin-left: 10px;
+}
+
+.top-card {
+  height: 60px;
+  width: 250px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.example-header-image {
+  /* background-image: url('{{post.avatar}}'); */
+  background-size: cover;
+}
+
+.spacer {
+  width: 200px;
+  height: 100%;
+}
+
+mat-grid-list {
+  /* margin: 50px; */
+  padding: 50px;
+}
+
+mat-card {
+  /* top: 50px; */
+  width: 500px;
+  height: 450px;
+}
+
+.cardimg {
+  width: 432px;
+  height: 250px;
+}
+
+mat-card-content {
+  text-align: center;
+}
+
+mat-grid-tile{
+  height: 100px;
+}

@@ -5,6 +5,7 @@ import {
   PostService
 } from './services/post.service';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,13 +16,13 @@ export class AppComponent {
   title = 'Project';
   showFiller = false;
 
-  constructor(private ps: PostService,changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(private router: Router,private ps: PostService,changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
 
   }
 
   users: any = [];
-  loginUser: string;
+  loginUser: string = "Guest";
   avatar: string;
   password: String;
 
@@ -46,8 +47,9 @@ export class AppComponent {
   logout(){
     localStorage.removeItem("username");
     localStorage.removeItem("avatar");
-    this.loginUser = "";
+    this.loginUser = "Guest";
     this.avatar = "";
+    this.router.navigate(['/list']);
   }
 
   getUser() {

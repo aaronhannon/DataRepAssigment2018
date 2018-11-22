@@ -3,12 +3,21 @@
 .example-card {
     max-width: 400px;
     min-width: 200px;
+    margin-left: 10px;
+  }
+
+.top-card{
+    height: 60px;
+    width: 250px;
   }
   
-  .example-header-image {
-    /* background-image: url('{{post.avatar}}'); */
-    background-size: cover;
-  }
+h1{
+    text-align: center;
+}
+.example-header-image {
+/* background-image: url('{{post.avatar}}'); */
+background-size: cover;
+}
 
 .spacer{
 width: 200px;
@@ -28,4 +37,8 @@ mat-card{
 .cardimg{
     width: 432px;
     height: 250px;
+}
+
+mat-card-content{
+    text-align: center;
 }

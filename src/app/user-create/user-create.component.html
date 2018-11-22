@@ -1,14 +1,31 @@
-<mat-card>
+<!-- <mat-card>
   <form (submit)="addUser(userForm)" #userForm="ngForm">
 
     <h2>Username</h2><input matInput type="text" name="username" ngModel required minlength="3" #username="ngModel">
-    <!-- <mat-error *ngIf="title.invalid">Please enter a post title.</mat-error> -->
 
     <h2>Password</h2><textarea matInput rows="4" name="password" width="100" ngModel required #password="ngModel"></textarea>
 
     <h2>Image</h2><textarea matInput rows="4" name="uimage" width="100" ngModel required #uimage="ngModel"></textarea>
-    <!-- <mat-error *ngIf="content.invalid">Please enter a post title.</mat-error> -->
 
     <button mat-raised-button color="accent" type="submit">Create User</button>
+  </form>
+</mat-card> -->
+
+<h1>CREATE ACCOUNT</h1>
+<mat-card class="container">
+  <form (submit)="addUser(userForm)" #userForm="ngForm">
+    <div class="center">
+        <h2><i class="material-icons">people</i> Username:</h2>
+        <input matInput type="text" name="username" ngModel required minlength="3" #username="ngModel">
+
+         <h2><i class="material-icons">description</i> Password:</h2>
+         <input matInput type="password" name="password" width="100" ngModel required #password="ngModel">
+
+         <h2><i class="material-icons">add_a_photo</i> Profile Avatar URL:</h2>
+         <input matInput type="text" name="uimage" width="100" ngModel required #uimage="ngModel">
+  
+        <br><br>
+        <button mat-raised-button color="accent" type="submit">Create</button> 
+    </div>
   </form>
 </mat-card>
