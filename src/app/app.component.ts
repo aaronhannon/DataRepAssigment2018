@@ -39,6 +39,7 @@ export class AppComponent {
     if(localStorage.getItem("loggedIn") == null){
       localStorage.setItem("loggedIn","false");
       location.reload();
+      this.router.navigate(['/list']);
     }else if(localStorage.getItem("loggedIn") == "true"){
       localStorage.setItem("loggedIn","true");
     }else if(localStorage.getItem("loggedIn") == "false"){
@@ -51,6 +52,7 @@ export class AppComponent {
       // this.avatar = this.users[0].image;
     });
     this.setTitle("PIC_POSTER");
+    
   }
 
   setLogin(username: string, avatar: string) {
