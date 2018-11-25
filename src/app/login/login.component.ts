@@ -37,7 +37,8 @@ export class LoginComponent implements OnInit {
         this.app.setLogin(form.value.username, this.users[this.i].image);
         localStorage.setItem("username", this.users[this.i].username);
         localStorage.setItem("avatar", this.users[this.i].image);
-
+        localStorage.setItem("loggedIn","true");
+        location.reload();
       }
     }
   }

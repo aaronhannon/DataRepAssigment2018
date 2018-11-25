@@ -25,7 +25,7 @@ export class UserCreateComponent implements OnInit {
 
     console.log(form.value);
     form.resetForm();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/list']);
 
   }
 
