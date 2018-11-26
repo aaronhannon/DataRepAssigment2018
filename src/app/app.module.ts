@@ -40,7 +40,8 @@ import {
   MatExpansionModule,
   MatGridListModule,
   MatSidenavModule,
-  MatListModule
+  MatListModule,
+  MatSnackBarModule
 } from '@angular/material';
 import {
   PostCreateComponent
@@ -108,7 +109,8 @@ const appRoutes: Routes = [{
     MatExpansionModule,
     MatListModule,
     MatMenuModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatSnackBarModule
   ],
   providers: [PostService],
   bootstrap: [AppComponent]

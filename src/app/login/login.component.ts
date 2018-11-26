@@ -39,9 +39,11 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("avatar", this.users[this.i].image);
         localStorage.setItem("loggedIn","true");
         location.reload();
+        
       }
     }
   }
+
 
   ngOnInit() {
     this.ps.getUserData().subscribe(data => {

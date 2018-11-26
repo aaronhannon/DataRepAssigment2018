@@ -125,7 +125,6 @@ app.get('/api/users', function (req, res) {
 
   UserModel.find(function (err, data) {
     res.json(data);
-    console.log(data[0].username);
   });
 
 })
