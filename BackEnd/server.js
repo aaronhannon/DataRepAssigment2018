@@ -30,7 +30,6 @@ var imageSchema = new Schema({
 
 var PostModel = mongoose.model('newPosts', postSchema);
 var UserModel = mongoose.model('users', userSchema);
-var ImageModel = mongoose.model('image', imageSchema);
 
 //Here we are configuring express to use body-parser as middle-ware. 
 app.use(bodyParser.urlencoded({
@@ -45,6 +44,16 @@ app.use(function (req, res, next) {
     "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+// app.use("/", express.static(path.join(__dirname, "angular")));
+
+// app.get('/', function(req, res){
+// res.sendFile(path.join(__dirname, "angular", "index.html"));
+// })
+
+app.get("/",function(req,res){
+  res.send("Connected to server");
+})
 
 app.post('/api/posts', function (req, res) {
   console.log("post successful");

@@ -52,7 +52,7 @@ export class AppComponent {
       // this.avatar = this.users[0].image;
     });
     this.setTitle("PIC_POSTER");
-    
+    this.router.navigate(['/list']);
   }
 
   setLogin(username: string, avatar: string) {

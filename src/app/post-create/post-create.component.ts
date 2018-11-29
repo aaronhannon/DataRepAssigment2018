@@ -12,6 +12,7 @@ import {
 import {
   HttpClient
 } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-create',
@@ -21,7 +22,7 @@ import {
 export class PostCreateComponent {
 
   
-  constructor(private service: PostService, private app: AppComponent,private http:HttpClient) {}
+  constructor(private router:Router,private service: PostService, private app: AppComponent,private http:HttpClient) {}
 
   user: string;
   avatar: string;
