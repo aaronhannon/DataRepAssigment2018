@@ -29,16 +29,13 @@ export class PostService {
   }
 
   getUserData(): Observable < any > {
-    // console.log(this.http.get("http://localhost:8081/api/users"));
     return this.http.get("http://localhost:8081/api/users");
 
   }
 
+  //Arrays
   private posts: Post[] = [];
   private users: User[] = [];
-  //private postsUpdated = new Subject<Post[]>();
-  // private user: String = "admin";
-
 
   getPosts() {
     return [...this.posts];

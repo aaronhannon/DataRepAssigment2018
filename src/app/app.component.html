@@ -1,78 +1,35 @@
-<!-- <mat-toolbar color='primary'>Posts</mat-toolbar> -->
-<!-- <app-post-create></app-post-create>
-<app-post-details></app-post-details> -->
-<!-- <div class="button-row">
-  <a mat-raised-button color="primary" [routerLink]="['/']"><mat-icon>add</mat-icon></a>
-</div> -->
-
-<!--<mat-toolbar color="primary" class="md-elevation-z5">
-  <mat-toolbar-row>
-       <mat-drawer-container class="example-container" autosize>
-          <mat-drawer #drawer class="example-sidenav" mode="side">
-            <p>Auto-resizing sidenav</p>
-            <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-            <button (click)="showFiller = !showFiller" mat-raised-button>
-              Toggle extra text
-            </button>
-          </mat-drawer>
-        
-          <div class="example-sidenav-content">
-            <button type="button" mat-button (click)="drawer.toggle()">
-              Toggle sidenav
-            </button>
-          </div>
-        
-        </mat-drawer-container> 
-    <span class="title-center">
-      My single page application
-    </span>
-    <button mat-button [routerLink]="['/create']" color="Warn">Create Post</button>
-    <button mat-button [routerLink]="['/list']">List</button>
-    <button mat-button [routerLink]="['/user']">Create User</button>
-    <button mat-button [routerLink]="['/login']">Login</button>
-    <button mat-button [routerLink]="['/myUploads']">My Uploads</button>
-    <span class="userSpace"></span>
-     <div><ngx-avatar class="user" size="40" src="{{avatar}}"><img src="{{avatar}}"></ngx-avatar></div>
-    <img alt="" src="{{avatar}}" class="user" width="40px" height="40px">
-
-    <p>{{loginUser}}</p>
-  </mat-toolbar-row>
-</mat-toolbar>-->
-<!-- <link rel="icon" type="image/x-icon" href="../assets/fav1.png"> -->
+<!-- SIDE NAV AND TOOLBAR -->
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
-    <mat-toolbar color="primary" class="example-toolbar">
-      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-      <!-- <h1 class="example-app-name"><i class="material-icons">camera_enhance</i> PIC_POSTER</h1> -->
-      <!-- <div [routerLink]="['/list']"> -->
-        <i class="material-icons">camera_enhance</i> <h2>PIC_POSTER</h2>
-      <span class="userSpace"></span>
-     
-     <h2>Welcome {{loginUser}}</h2><img alt="" src="{{avatar}}" class="user" width="40px" height="40px">
-    </mat-toolbar>
-  
-    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-        <mat-nav-list>
-            <a *ngIf="loggedIn == 'true'" mat-list-item [routerLink]="['/create']"><i class="material-icons">add_circle</i> CREATE POST</a>
-            <a mat-list-item [routerLink]="['/list']"><i class="material-icons">list</i> RECENT POSTS</a>
-            <a *ngIf="loggedIn == 'false'" mat-list-item [routerLink]="['/user']"><i class="material-icons">person_add</i> CREATE USER</a>
-            <a *ngIf="loggedIn == 'false'" mat-list-item [routerLink]="['/login']"><i class="material-icons">face</i> LOGIN</a>
-            <a *ngIf="loggedIn == 'true'" mat-list-item [routerLink]="['/myUploads']"><i class="material-icons">photo_library</i> MY UPLOADS</a>
-            <a *ngIf="loggedIn == 'true'" class="logout" mat-list-item (click)="logout()"><i class="material-icons">power_settings_new</i> LOGOUT</a>
-        </mat-nav-list>
-      </mat-sidenav>
-  
-      <mat-sidenav-content>
-          <router-outlet></router-outlet>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
-  </div>  
-<!--<button mat-button color="primary" [matMenuTriggerFor]="menu">Posts Menu</button>
-<mat-menu color="primary" #menu="matMenu">
-  <button color="primary" mat-menu-item [routerLink]="['/create']">Create</button>
-  <button color="primary"mat-menu-item [routerLink]="['/']">List</button>
-</mat-menu> -->
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <i class="material-icons">camera_enhance</i>
+    <h2>PIC_POSTER</h2>
+    <span class="userSpace"></span>
 
+    <h2>Welcome {{loginUser}}</h2><img alt="" src="{{avatar}}" class="user" width="40px" height="40px">
+  </mat-toolbar>
 
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list>
+        <a *ngIf="loggedIn == 'true'" mat-list-item [routerLink]="['/create']"><i class="material-icons">add_circle</i>
+          CREATE POST</a>
+        <a mat-list-item [routerLink]="['/list']"><i class="material-icons">list</i> RECENT POSTS</a>
+        <a *ngIf="loggedIn == 'false'" mat-list-item [routerLink]="['/user']"><i class="material-icons">person_add</i>
+          CREATE USER</a>
+        <a *ngIf="loggedIn == 'false'" mat-list-item [routerLink]="['/login']"><i class="material-icons">face</i> LOGIN</a>
+        <a *ngIf="loggedIn == 'true'" mat-list-item [routerLink]="['/myUploads']"><i class="material-icons">photo_library</i>
+          MY UPLOADS</a>
+        <a *ngIf="loggedIn == 'true'" class="logout" mat-list-item (click)="logout()"><i class="material-icons">power_settings_new</i>
+          LOGOUT</a>
+      </mat-nav-list>
+    </mat-sidenav>
 
-<!--  -->
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

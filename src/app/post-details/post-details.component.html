@@ -1,44 +1,18 @@
-<!-- <ul>
-  <li *ngFor="let p of posts">
-      
-     <p>{{p.title}}</p>
-     <p>{{p.content}}</p>
-<p><button>Edit</button><button>Delete</button></p>
-</ul> -->
-<!-- <mat-grid-list cols="2">
-
-  <mat-grid-tile>
-    <mat-card class="example-card">{{userCount}}</mat-card>
-
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card class="example-card">{{postCount}}</mat-card>
-  </mat-grid-tile>
-
-</mat-grid-list> -->
-
-
+<!-- POST DETAILS PAGE -->
 <mat-grid-list *ngIf="posts.length > 0" cols="4" rowHeight="500px">
-  <!-- rowHeight="2:1" -->
   <mat-grid-tile>
 
   </mat-grid-tile>
   <mat-grid-tile>
-      <!-- <mat-card class="example-card">
-          <mat-card-header>
-              <p><button mat-button color="Warn"><i class="material-icons">people</i> Number of Users: {{userCount}}</button></p>
-            </mat-card-header>
-        
-      </mat-card> -->
-      <mat-card class="top-card">
-          <mat-card-header>
-            <mat-card-title class="title"><i class="material-icons">people</i> NUMBER OF USERS: </mat-card-title>
-            <mat-card-subtitle> </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-              <h2>{{userCount}}</h2>
-            </mat-card-content>
-        </mat-card>
+    <mat-card class="top-card">
+      <mat-card-header>
+        <mat-card-title class="title"><i class="material-icons">people</i> NUMBER OF USERS: </mat-card-title>
+        <mat-card-subtitle> </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h2>{{userCount}}</h2>
+      </mat-card-content>
+    </mat-card>
   </mat-grid-tile>
   <mat-grid-tile>
     <mat-card class="top-card">
@@ -47,13 +21,10 @@
         <mat-card-subtitle> </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-          <h2>{{postCount}}</h2>
-        </mat-card-content>
+        <h2>{{postCount}}</h2>
+      </mat-card-content>
     </mat-card>
-    <!-- <iframe width="1280" height="720" src="https://www.youtube.com/embed/00jImEXv4Zg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
   </mat-grid-tile>
-
-
 
   <mat-grid-tile>
 
@@ -73,26 +44,8 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <!-- , post._id -->
-        <!-- <button mat-button color="primary" *ngIf="post.user == user" [routerLink]="['/edit',post._id]">EDIT</button>
-        <button mat-button  [routerLink]="['/edit']">EDIT</button>
-        <button *ngIf="post.user == user" (click)="onDelete(post._id)" mat-button color="warn">DELETE</button> -->
       </mat-card-actions>
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
-<!-- <mat-expansion-panel [expanded]="false" *ngFor="let post of posts">
-    <mat-expansion-panel-header [collapsedHeight]="'60px'">
-      <ngx-avatar size="50" src="{{post.avatar}}"></ngx-avatar>{{ post.user }}
-      
-    </mat-expansion-panel-header>
-    <p>{{post.title}}</p>
-    <p>{{ post.description }}</p>
-    <p>Posted By:{{post.user}}</p>
-    <p><img width ="30%" src="{{post.image}}"></p>
-    <mat-action-row>
-      <button mat-button color="primary">EDIT</button>
-      <button (click)="onDelete(post._id)" mat-button color="warn">DELETE</button>
-    </mat-action-row>
-  </mat-expansion-panel> -->
 <p class="info-text mat-body-1" *ngIf="posts.length <= 0">No posts added yet!</p>

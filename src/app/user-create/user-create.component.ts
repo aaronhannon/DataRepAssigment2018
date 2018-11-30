@@ -19,6 +19,7 @@ export class UserCreateComponent implements OnInit {
 
   constructor(private router: Router,private service: PostService) {}
 
+  // ADD USER 
   addUser(form: NgForm) {
 
     this.service.addUser(form.value.username, form.value.password, form.value.uimage).subscribe();

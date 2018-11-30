@@ -1,8 +1,5 @@
 var express = require('express');
-var multer = require('multer');
 var app = express();
-var app1 = express();
-var path = require('path');
 var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
@@ -24,14 +21,10 @@ var userSchema = new Schema({
   image: String
 })
 
-var imageSchema = new Schema({
-    image: String,
-  })
-
+//Models
 var PostModel = mongoose.model('newPosts', postSchema);
 var UserModel = mongoose.model('users', userSchema);
 
-//Here we are configuring express to use body-parser as middle-ware. 
 app.use(bodyParser.urlencoded({
   extended: false
 }));
@@ -45,16 +38,21 @@ app.use(function (req, res, next) {
   next();
 });
 
+//+++++++++++++++++++++++++++
+// FOR RUNNING ON THE SERVER
 // app.use("/", express.static(path.join(__dirname, "angular")));
 
 // app.get('/', function(req, res){
 // res.sendFile(path.join(__dirname, "angular", "index.html"));
 // })
+//+++++++++++++++++++++++++++
 
-app.get("/",function(req,res){
+//Initial request
+app.get("/", function (req, res) {
   res.send("Connected to server");
 })
 
+//CREATE POST
 app.post('/api/posts', function (req, res) {
   console.log("post successful");
   console.log(req.body.title);
@@ -74,15 +72,7 @@ app.post('/api/posts', function (req, res) {
 
 })
 
-app.post('/api/images', function (req, res) {
-    console.log("image posted");
-    console.log(req.body.image);
-  
-    ImageModel.create({
-      image: req.body.image,
-    });
-  })
-
+//CREATE USER
 app.post('/api/users', function (req, res) {
   console.log("user created");
   console.log(req.body.username);
@@ -98,6 +88,7 @@ app.post('/api/users', function (req, res) {
 
 })
 
+//DELETE POST VIA ID
 app.delete('/api/posts/:id', function (req, res) {
   PostModel.deleteOne({
       _id: req.params.id
@@ -105,41 +96,38 @@ app.delete('/api/posts/:id', function (req, res) {
     function (err) {});
 })
 
+//GET POST VIA ID
 app.get('/api/posts/:id', function (req, res) {
-  PostModel.find({_id: req.params.id},
+  PostModel.find({
+      _id: req.params.id
+    },
     function (err, data) {
-      //   if (err)
-      //     return handleError(err);
       res.json(data);
     });
 });
 
+//UPDATE POST
 app.put('/api/posts/:id', function (req, res) {
   PostModel.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
-    // if (err) return next(err);
     res.json(post);
   });
 })
 
+//GET POSTS
 app.get('/api/posts', function (req, res) {
-
   PostModel.find(function (err, data) {
     res.json(data);
   });
 
 })
 
-
+//GET USERS
 app.get('/api/users', function (req, res) {
-
   UserModel.find(function (err, data) {
     res.json(data);
   });
 
 })
-
-
-
 
 var server = app.listen(8081, function () {
   var host = server.address().address

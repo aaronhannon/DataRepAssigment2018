@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { PostService } from '../services/post.service';
-import { AppComponent } from '../app.component';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  PostService
+} from '../services/post.service';
+import {
+  AppComponent
+} from '../app.component';
 
 @Component({
   selector: 'app-my-uploads',
@@ -14,38 +21,32 @@ export class MyUploadsComponent implements OnInit {
   user: string;
   avatar: string;
 
-  constructor(private ps: PostService,private app: AppComponent) {}
+  constructor(private ps: PostService, private app: AppComponent) {}
 
+  //GETS ID OF POST AND SENDS IT TO THE SERVER TO BE DELETED
   onDelete(id: string) {
     console.log("Deleting item")
     this.ps.deletePost(id).subscribe();
     location.reload();
     this.ngOnInit();
-    //this.refresh();
   }
 
+  // ON INIT GETS THE POST DATA AND ONLY DISPLAYS THE POSTS THAT THE LOGGED IN USER CREATED
   ngOnInit() {
-    //this.posts = this.ps.getPosts();
-
     this.ps.getPostsData().subscribe(data => {
       this.posts = data;
       var j = 0;
       for (var index = 0; index < this.posts.length; index++) {
-        // console.log("here");
-        
-        if(this.posts[index].user == this.user){
+        if (this.posts[index].user == this.user) {
           this.myPosts[j] = this.posts[index];
           j++;
         }
-        
       }
       console.log(this.posts);
       console.log(this.myPosts)
     });
-    // console.log(localStorage.getItem("username"));
     this.user = localStorage.getItem("username");
     this.avatar = localStorage.getItem("avatar");
-    this.app.setLogin(this.user,this.avatar);
-    // console.log(this.posts)
+    this.app.setLogin(this.user, this.avatar);
   }
 }

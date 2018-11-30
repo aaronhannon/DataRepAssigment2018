@@ -1,7 +1,7 @@
+<!-- MY UPLOADS PAGE -->
 <span class="spacer"></span>
 <h1>MY POSTS</h1>
 <mat-grid-list *ngIf="posts.length > 0" cols="4">
-  <!-- rowHeight="2:1" -->
   <mat-grid-tile *ngFor="let post of myPosts">
     <mat-card class="example-card" *ngIf="post.user == user">
       <mat-card-header>
@@ -16,9 +16,7 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <!-- , post._id -->
         <button mat-button color="primary" *ngIf="post.user == user" [routerLink]="['/edit',post._id]">EDIT</button>
-        <!-- <button mat-button  [routerLink]="['/edit']">EDIT</button> -->
         <button *ngIf="post.user == user" (click)="onDelete(post._id)" mat-button color="warn">DELETE</button>
       </mat-card-actions>
     </mat-card>

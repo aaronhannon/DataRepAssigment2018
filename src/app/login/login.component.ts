@@ -26,10 +26,10 @@ export class LoginComponent implements OnInit {
   avatar: String;
   i: number = 0;
 
+  // FOR LOOP COMPARES ALL ITEMS IN THE ARRAY AGAINST THE FORM VALUES
+  //IF TRUE = LOGGED IN
   login(form: NgForm) {
-
     this.ngOnInit();
-
     for (this.i = 0; this.i < this.users.length; this.i++) {
       if (form.value.username == this.users[this.i].username && form.value.password == this.users[this.i].password) {
 
@@ -37,20 +37,18 @@ export class LoginComponent implements OnInit {
         this.app.setLogin(form.value.username, this.users[this.i].image);
         localStorage.setItem("username", this.users[this.i].username);
         localStorage.setItem("avatar", this.users[this.i].image);
-        localStorage.setItem("loggedIn","true");
+        localStorage.setItem("loggedIn", "true");
         location.reload();
-        
+
       }
     }
   }
 
-
+  // ON INIT GETS USER DATA
   ngOnInit() {
     this.ps.getUserData().subscribe(data => {
       this.users = data;
       console.log(this.users);
-      // this.loginUser = this.users[0].username;
-      // this.avatar = this.users[0].image;
     });
 
   }

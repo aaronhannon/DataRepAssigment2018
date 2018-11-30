@@ -30,17 +30,14 @@ export class PostDetailsComponent implements OnInit {
   postCount: number;
 
   constructor(private ps: PostService, private app: AppComponent) {}
-
-
   onDelete(id: string) {
     console.log("Deleting item")
     this.ps.deletePost(id).subscribe();
     location.reload();
     this.ngOnInit();
-    //this.refresh();
   }
 
-
+  // ON INIT GETS POST AND USER DATA AND GETS LOCAL STORAGE DETAILS AND SETS LOGIN
   ngOnInit() {
     //this.posts = this.ps.getPosts();
 
@@ -52,13 +49,13 @@ export class PostDetailsComponent implements OnInit {
     console.log(localStorage.getItem("username"));
     this.user = localStorage.getItem("username");
     this.avatar = localStorage.getItem("avatar");
-    this.app.setLogin(this.user,this.avatar);
-    
-    this.ps.getUserData().subscribe(data =>{
+    this.app.setLogin(this.user, this.avatar);
+
+    this.ps.getUserData().subscribe(data => {
       this.users = data;
       this.userCount = this.users.length;
     });
-    
+
   }
 
 }
